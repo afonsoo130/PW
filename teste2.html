@@ -3,9 +3,7 @@
   <meta charset="utf-8">
   <title>Formulário PW</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
-
-  <link rel="stylesheet" hret="style.css">
-
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -33,7 +31,13 @@
                 <option value="outro">Outro</option>
             </select>
 
-            <button type="submit" onclick="guardar()">Guardar</button>
+            <button type="submit">Guardar</button>
+            <button type="button" onclick="fetchAPI('https://ioeduc-dot-iodevprojects.appspot.com/mt2/A89765', 'GET')">Carregar dados</button>
+
+            <table border="1">
+                <thead id="cabecalho"></thead>
+                <tbody id="tabela"></tbody>
+            </table>
         </form>
     </div>
 
@@ -43,10 +47,11 @@
         var eid = "PG12345";
         var email = "joaosilva@gmail.com";
 
-        document.getElementById(eid).addEventListener("submit", function() {
+        document.getElementById(eid).addEventListener("submit", function(e) {
+            e.preventDefault();
             alert("Formulário de PW do " + email);
 
-            var form = document.getElementById(SID);
+            var form = document.getElementById(eid);
 
             var dados = {
                 nome: form.nome.value,
@@ -58,6 +63,9 @@
             localStorage.setItem(SID, JSON.stringify(dados));
         });
     </script>
+
+    <!-- script no fim para garantir que o HTML já está carregado -->
+    <script src="app.js"></script>
 
 </body>
 </html>
