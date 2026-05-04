@@ -16,14 +16,52 @@
 
         <h2>
             Formulário PW
-            <a href ="https://uminho.pt>" target="_blank">Universidade do Minho</a>
+            <a href ="https://www.uminho.pt/PT" target="_blank">Universidade do Minho</a>
         </h2>
 
         <form id="A108358">
             
             <input type="text" name="nome" placeholder="João Silva"><br>
             <input type="email" name="email" placeholder="joaosilva@gmail.com"><br>
-            
+            <input type="date" name="nascimento" placeholder="DD-MM-AAAA"><br>
+            <input type="text" name="localidade" placeholder="localidade"><br>
+
+            <select name="profissao">
+                <option value="programador">Programador</option>
+                <option value="engenheiro">Engenheiro</option>
+                <option value="outro">Outro</option>
+            </select>
+
+            <button type="button" onclick="guardar()">Guardar</button>
         </form>
-    </body>
+    
+
+    <script>
+
+        var SID = "A108358";
+        var fname = "João Silva";
+        var eid = "PG12345";
+
+        document.getElementById(SID).addEventListener("click", function() {
+            alert("Formulário desenvolvido por " + fname);
+        });
+
+        function guardar() {
+            var form = document.getElementById(SID);
+
+        var dados = {
+            nome: form.nome.value,
+            email: form.email.value,
+            nascimento: form.nascimento.value,
+            localidade: form.localidade.value,
+            profissao: form.profissao.value,
+        };
+
+        localStorage.setItem(eid, JSON.stringify(dados));
+        alert("Dados guardados!");
+    
+        }
+
+    </script>
+</body>
 </html>

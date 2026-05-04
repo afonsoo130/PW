@@ -1,0 +1,61 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Formulário PW</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    
+    <div style="margin: 58px">
+
+        <h5>
+            Formulário desenvolvido por: João Silva
+        </h5>
+
+        <h2 style="color: #050406;">
+            Formulário PW
+            <a href="https://www.uminho.pt/PT" target="_blank">Universidade do Minho</a>
+        </h2>
+
+        <form id="PG12345">
+
+            <input type="text" name="nome" placeholder="Nome"><br>
+            <input type="email" name="email" placeholder="Email"><br>
+            <input type="date" name="nascimento"><br>
+            <input type="text" name="localidade"><br>
+
+            <select name="disciplinas">
+                <option value="pw">PW</option>
+                <option value="doti">DOTI</option>
+                <option value="outro">Outro</option>
+            </select>
+
+            <button type="submit" onclick="guardar()">Guardar</button>
+        </form>
+    </div>
+
+    <script>
+        var SID = "A108358";
+        var fname = "João Silva";
+        var eid = "PG12345";
+        var email = "joaosilva@gmail.com";
+
+        document.getElementById(eid).addEventListener("submit", function() {
+            alert("Formulário de PW do " + email);
+
+            var form = document.getElementById(SID);
+
+            var dados = {
+                nome: form.nome.value,
+                email: form.email.value,
+                nascimento: form.nascimento.value,
+                localidade: form.localidade.value,
+                disciplinas: form.disciplinas.value
+            };
+            localStorage.setItem(SID, JSON.stringify(dados));
+        });
+    </script>
+
+</body>
+</html>
